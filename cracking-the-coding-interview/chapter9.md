@@ -44,4 +44,16 @@
 <br />
 <br />
 
-## Bit Manipulation (비트 조작)
+## 소수 판별하기
+
+### n의 제곱근까지만 확인해보기
+- n을 나눌 수 있는 숫자 a는 a*b=n을 만족하는 보수 b를 가지기 때문이다.
+
+
+![carbon](https://user-images.githubusercontent.com/20738369/111037660-76d3f680-8468-11eb-8da8-91be5cdaa005.png)
+
+
+### 에라토스테네스의 체
+- 소수 목록을 만드는 효율적인 방법
+
+![Sieve_of_Eratosthenes_animation](https://user-images.githubusercontent.com/20738369/111037978-db438580-8469-11eb-9f4e-ca6c0447aaec.gif)
