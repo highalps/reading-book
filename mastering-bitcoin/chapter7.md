@@ -1,5 +1,8 @@
 # 7장. 블록체인
 
+![image](https://user-images.githubusercontent.com/20738369/120070824-51e63b80-c0c7-11eb-97c2-4135d2fda332.png)
+
+
 ## 블록 구조
 
 | Size                      | Field               | Description                  |
@@ -49,8 +52,31 @@
 비트코인 블록체인 내에 있는 블록 각각은 머클 트리를 이용하여 해당 블록에 들어 있는 모든 거래의 요약본을 가지고 있다
 
 - binary hash tree (이진 해시 트리) 라고도 한다.
-- 규모가 큰 데이터 집합의 완전성을 효율적으로 요약/검증하는데 사용되는 데이터 구조다
+- 규모가 큰 데이터 집합의 완전성을 효율적으로 요약/검증하는데 사용되는 데이터 구조다.
+- 머클 트리에 사용되는 암호 해시 알고리즘은 더블 SHA256 이다.
+- N개의 데이터 요소가 해시되고 요약되면, 특정 데이터 요소가 트리에 포함되는지 찾는데는 최대 2*log2(N)의 시간 복잡도가 필요하다 .
 
 ![image](https://user-images.githubusercontent.com/20738369/119177191-f0aae080-baa6-11eb-9b22-c9128597fb49.png)
 
 > 머클 트리에서 노드 계산하기
+
+그림 설명)
+- H_A = SHA256(SHA256(Transaction A))
+- H_AB = SHA256(SHA256(H_A + H_B))
+- ..... root node까지 반복적으로 수행 (bottom-up 방식)
+- H_ABCD에는 블록 헤더에 저장되어 4건의 거래 데이터 전체를 요약한다 (32byte의 크기)
+
+<br />
+
+![image](https://user-images.githubusercontent.com/20738369/120069932-7213fb80-c0c3-11eb-882f-846530c524be.png)
+
+> 홀수개인 경우엔 마지막 거래의 해시를 복사해서 balanced tree를 만든다.
+
+<br />
+
+![image](https://user-images.githubusercontent.com/20738369/120070353-0894ec80-c0c5-11eb-8bb6-ea868865845d.png)
+
+
+## Reference
+
+- https://www.banksalad.com/contents/%EC%89%BD%EA%B2%8C-%EC%84%A4%EB%AA%85%ED%95%98%EB%8A%94-%EB%B8%94%EB%A1%9D%EC%B2%B4%EC%9D%B8-%EB%A8%B8%ED%81%B4%ED%8A%B8%EB%A6%AC-Merkle-Trees-%EB%9E%80-ilULl#:~:text=%EC%9D%B4%20%EA%B3%BC%EC%A0%95%EC%9D%80%20%EA%B7%B8%EB%A6%BC%EC%B2%98%EB%9F%BC,%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EB%A7%8C%EB%93%A4%EC%96%B4%EC%A3%BC%EB%8A%94%20%EA%B2%83%EC%9D%B4%EB%8B%A4.
